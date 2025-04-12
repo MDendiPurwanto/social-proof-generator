@@ -2,7 +2,7 @@
 Contributors: dendiwp
 Tags: social proof, notification, popup, marketing
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.7
 Stable tag: 1.2
 Requires PHP: 7.0
 License: GPLv2 or later
@@ -35,12 +35,16 @@ Ya, plugin ini dirancang untuk kompatibel dengan sebagian besar tema WordPress. 
 = Bisakah saya menonaktifkan popup pada post? =
 Ya, plugin ini hanya menampilkan popup pada halaman (page) dan tidak pada post.
 
+= Bagaimana cara terbaik untuk menambahkan gambar produk? =
+Kami menyarankan mengunggah gambar ke Media Library WordPress dan menggunakan URL yang dihasilkan. Ini memastikan kompatibilitas dengan fitur WordPress seperti pengoptimalan gambar atau CDN.
+
 == Changelog ==
 = 1.2 =
 * Menambahkan implementasi langsung di footer.
 * Membatasi tampilan hanya pada halaman (bukan post).
 * Menambahkan text domain untuk terjemahan.
 * Struktur ulang kode untuk standar WordPress.
+* Perbaikan keamanan dan validasi input.
 
 = 1.1 =
 * Versi awal dengan fitur dasar.
