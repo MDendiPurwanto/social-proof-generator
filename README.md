@@ -72,7 +72,7 @@ This plugin is licensed under the [GPLv2 or later](https://www.gnu.org/licenses/
 
 ## Contact
 
-For questions, suggestions, or support, please open an issue in this repository or contact me at [your-email@example.com](mailto:your-email@example.com).
+For questions, suggestions, or support, please open an issue in this repository or contact me at [mdendipurwanto0112@gmail.com](mailto:mdendipurwanto0112@gmail.com).
 
 ---
 
