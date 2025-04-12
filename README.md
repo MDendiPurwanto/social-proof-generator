@@ -1,8 +1,8 @@
 # Social Proof Generator
 
-A WordPress plugin to display customizable social proof notifications on pages, boosting visitor trust with random names, products, and purchase times.
+![Plugin Banner](assets/images/banner.png)
 
-![Plugin Banner](https://via.placeholder.com/772x250.png?text=Social+Proof+Generator) <!-- Ganti dengan banner asli jika ada -->
+A WordPress plugin to display customizable social proof notifications on pages, boosting visitor trust with random names, products, and purchase times.
 
 ## Description
 
