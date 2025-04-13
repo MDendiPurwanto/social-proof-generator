@@ -42,10 +42,10 @@ Alternatively, you can install it directly from the WordPress Plugin Repository 
 ## Screenshots
 
 1. **Admin Settings Page**  
-   ![Admin Settings](screenshots/admin-settings.png) <!-- Ganti dengan screenshot asli -->
+   ![Admin Settings](screenshots/admin-settings.png) 
 
 2. **Popup Example on Page**  
-   ![Popup Example](screenshots/popup-example.png) <!-- Ganti dengan screenshot asli -->
+   ![Popup Example](screenshots/popup-example.png) 
 
  ## Status
 Plugin ini telah diajukan ke WordPress.org dan sedang menunggu tinjauan. Lihat [repositori GitHub](https://github.com/MDendiPurwanto/social-proof-generator) untuk pembaruan.
