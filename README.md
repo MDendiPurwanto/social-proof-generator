@@ -47,6 +47,9 @@ Alternatively, you can install it directly from the WordPress Plugin Repository 
 2. **Popup Example on Page**  
    ![Popup Example](screenshots/popup-example.png) 
 
+3. **Edit Page Option to enable/disable pop-up on specific pages via the page editor**  
+   ![Popup Example](screenshots/edit-page.png) 
+
  ## Status
 Plugin ini telah diajukan ke WordPress.org dan sedang menunggu tinjauan. Lihat [repositori GitHub](https://github.com/MDendiPurwanto/social-proof-generator) untuk pembaruan.
 
