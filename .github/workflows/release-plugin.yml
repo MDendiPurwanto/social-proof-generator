@@ -1,0 +1,56 @@
+name: Create Plugin Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout kode dari repositori
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Siapkan folder plugin dan hapus file yang tidak perlu
+      - name: Prepare plugin directory
+        run: |
+          # Buat folder sementara untuk plugin
+          mkdir -p social-proof-generator
+          # Salin file yang diperlukan
+          cp -r assets social-proof-generator/
+          cp readme.txt social-proof-generator/
+          cp social-proof-generator.php social-proof-generator/
+          # (Opsional) Salin folder languages jika ada terjemahan
+          cp -r languages social-proof-generator/ 2>/dev/null || true
+          # Pastikan tidak ada file pengembangan
+          rm -rf social-proof-generator/.git*
+          rm -rf social-proof-generator/.github
+
+      # Buat file ZIP dari folder plugin
+      - name: Create ZIP
+        run: |
+          zip -r social-proof-generator-${{ github.ref_name }}.zip social-proof-generator/
+
+      # Buat atau perbarui release di GitHub
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: social-proof-generator-${{ github.ref_name }}.zip
+          name: Social Proof Generator ${{ github.ref_name }}
+          body: |
+            ## Social Proof Generator ${{ github.ref_name }}
+
+            ### Changelog
+            See the [Changelog](https://github.com/MDendiPurwanto/social-proof-generator/blob/main/readme.txt) in `readme.txt` for details.
+
+            ### Download
+            Download the plugin ZIP below to install it on your WordPress site.
+
+            Thank you for using Social Proof Generator!
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
