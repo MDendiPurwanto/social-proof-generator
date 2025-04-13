@@ -2,7 +2,7 @@
 /*
 Plugin Name: Social Proof Generator
 Description: Menampilkan notifikasi social proof dengan pengaturan posisi, durasi, animasi, pesan acak, dan warna kustom hanya pada halaman.
-Version: 1.3
+Version: 1.2
 Author: Muhamad Dendi Purwanto
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

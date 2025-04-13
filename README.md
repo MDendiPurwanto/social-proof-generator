@@ -12,7 +12,7 @@ Social Proof Generator is a lightweight WordPress plugin that displays popup not
 - **Customizable Position**: Choose from bottom-left, bottom-right, top-left, or top-right.
 - **Animation Options**: Fade or slide effects for smooth transitions.
 - **Randomized Messages**: Display random names and products for dynamic notifications.
-- **Custom Styling**: Set background color and product image URL.
+- **Custom Styling**: Set background color and product upload image.
 - **Page-Specific**: Notifications appear only on WordPress pages, not posts.
 - **Easy Setup**: Configure everything from the WordPress admin panel.
 
