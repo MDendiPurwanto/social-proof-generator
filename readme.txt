@@ -42,6 +42,9 @@ Ya, plugin ini hanya menampilkan popup pada halaman (page) dan tidak pada post.
 = Bagaimana cara terbaik untuk menambahkan gambar produk? =
 Kami menyarankan mengunggah gambar ke Media Library WordPress dan  mengunggah gambar dari Media Library. Ini memastikan kompatibilitas dengan fitur WordPress seperti pengoptimalan gambar atau CDN.
 
+= Does the plugin leave any data after uninstall? =
+No, the plugin will automatically remove all its data (settings and per-page options) when you delete it via the WordPress dashboard.
+
 == License ==
 Social Proof Generator is licensed under the GNU General Public License v2 or later.
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -78,3 +81,8 @@ All images in assets/images/ are licensed under the GNU General Public License v
 * Memperbaiki error JavaScript pada media uploader.
 * Menambahkan lisensi eksplisit untuk semua aset.
 * Menambahkan file LICENSE untuk kepatuhan GPL.
+
+= 1.4.1 =
+* Added uninstall.php to clean up plugin data (options and post meta) on deletion.
+* Fixed missing assets folder in ZIP distribution.
+* Fixed PHPCS errors for output escaping and input sanitization.
