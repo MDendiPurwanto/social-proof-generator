@@ -3,7 +3,7 @@ Contributors: dendiwp
 Tags: social proof, notification, popup, marketing
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.2
+Stable tag: 1.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -19,7 +19,7 @@ Fitur:
 - Pilihan animasi (fade atau slide)
 - Daftar nama dan produk acak
 - Warna latar belakang kustom
-- URL gambar produk kustom
+- Upload gambar produk kustom
 - Hanya ditampilkan pada halaman
 
 == Installation ==
@@ -36,7 +36,7 @@ Ya, plugin ini dirancang untuk kompatibel dengan sebagian besar tema WordPress. 
 Ya, plugin ini hanya menampilkan popup pada halaman (page) dan tidak pada post.
 
 = Bagaimana cara terbaik untuk menambahkan gambar produk? =
-Kami menyarankan mengunggah gambar ke Media Library WordPress dan menggunakan URL yang dihasilkan. Ini memastikan kompatibilitas dengan fitur WordPress seperti pengoptimalan gambar atau CDN.
+Kami menyarankan mengunggah gambar ke Media Library WordPress dan  mengunggah gambar dari Media Library. Ini memastikan kompatibilitas dengan fitur WordPress seperti pengoptimalan gambar atau CDN.
 
 == Changelog ==
 = 1.2 =
@@ -52,3 +52,6 @@ Kami menyarankan mengunggah gambar ke Media Library WordPress dan menggunakan UR
 == Upgrade Notice ==
 = 1.2 =
 Versi ini menghapus kebutuhan untuk menyalin kode dan menambahkan popup langsung ke footer hanya pada halaman. Pastikan untuk memeriksa pengaturan setelah pembaruan.
+
+= 1.3 =
+Versi ini memperbaiki upload image produk. Pastikan untuk memeriksa pengaturan setelah pembaruan.
