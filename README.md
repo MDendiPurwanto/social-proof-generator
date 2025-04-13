@@ -50,6 +50,9 @@ Alternatively, you can install it directly from the WordPress Plugin Repository 
  ## Status
 Plugin ini telah diajukan ke WordPress.org dan sedang menunggu tinjauan. Lihat [repositori GitHub](https://github.com/MDendiPurwanto/social-proof-generator) untuk pembaruan.
 
+## Release
+Versi terbaru: [v1.2](https://github.com/MDendiPurwanto/social-proof-generator/releases/tag/v1.2)
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to the development of Social Proof Generator, please follow these steps:
