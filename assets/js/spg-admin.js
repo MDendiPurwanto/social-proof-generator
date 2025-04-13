@@ -1,3 +1,11 @@
+/*
+ * Social Proof Generator Script
+ * Copyright (C) 2025 Muhamad Dendi Purwanto
+ * Licensed under the GNU General Public License v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+
 jQuery(document).ready(function($) {
     // Media uploader
     var mediaUploader;

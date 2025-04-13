@@ -38,7 +38,22 @@ Ya, plugin ini hanya menampilkan popup pada halaman (page) dan tidak pada post.
 = Bagaimana cara terbaik untuk menambahkan gambar produk? =
 Kami menyarankan mengunggah gambar ke Media Library WordPress dan  mengunggah gambar dari Media Library. Ini memastikan kompatibilitas dengan fitur WordPress seperti pengoptimalan gambar atau CDN.
 
+== License ==
+Social Proof Generator is licensed under the GNU General Public License v2 or later.
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+== Assets ==
+All images in assets/images/ are licensed under the GNU General Public License v2 or later.
+
+== Third-Party Libraries ==
+* jQuery: MIT License, https://jquery.org/license/
+
 == Changelog ==
+
+= 1.1 =
+* Versi awal dengan fitur dasar.
+
+== Upgrade Notice ==
 = 1.2 =
 * Menambahkan implementasi langsung di footer.
 * Membatasi tampilan hanya pada halaman (bukan post).
@@ -46,12 +61,8 @@ Kami menyarankan mengunggah gambar ke Media Library WordPress dan  mengunggah ga
 * Struktur ulang kode untuk standar WordPress.
 * Perbaikan keamanan dan validasi input.
 
-= 1.1 =
-* Versi awal dengan fitur dasar.
-
-== Upgrade Notice ==
-= 1.2 =
-Versi ini menghapus kebutuhan untuk menyalin kode dan menambahkan popup langsung ke footer hanya pada halaman. Pastikan untuk memeriksa pengaturan setelah pembaruan.
-
 = 1.3 =
-Versi ini memperbaiki upload image produk. Pastikan untuk memeriksa pengaturan setelah pembaruan.
+* Mengganti input URL gambar dengan media uploader untuk performa lebih baik.
+* Memperbaiki error JavaScript pada media uploader.
+* Menambahkan lisensi eksplisit untuk semua aset.
+* Menambahkan file LICENSE untuk kepatuhan GPL.
