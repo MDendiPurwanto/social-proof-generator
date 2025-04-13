@@ -81,8 +81,6 @@ All images in assets/images/ are licensed under the GNU General Public License v
 * Memperbaiki error JavaScript pada media uploader.
 * Menambahkan lisensi eksplisit untuk semua aset.
 * Menambahkan file LICENSE untuk kepatuhan GPL.
-
-= 1.4.1 =
 * Added uninstall.php to clean up plugin data (options and post meta) on deletion.
 * Fixed missing assets folder in ZIP distribution.
 * Fixed PHPCS errors for output escaping and input sanitization.
