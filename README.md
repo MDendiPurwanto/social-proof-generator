@@ -47,6 +47,9 @@ Alternatively, you can install it directly from the WordPress Plugin Repository 
 2. **Popup Example on Page**  
    ![Popup Example](screenshots/popup-example.png) <!-- Ganti dengan screenshot asli -->
 
+ ## Status
+Plugin ini telah diajukan ke WordPress.org dan sedang menunggu tinjauan. Lihat [repositori GitHub](https://github.com/MDendiPurwanto/social-proof-generator) untuk pembaruan.
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to the development of Social Proof Generator, please follow these steps:
