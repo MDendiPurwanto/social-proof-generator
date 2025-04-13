@@ -55,7 +55,7 @@ Plugin ini telah diajukan ke WordPress.org dan sedang menunggu tinjauan. Lihat [
 
 ## Status
 Fixed permissions for automated release v1.4.
-Latest version: [v1.3](https://github.com/MDendiPurwanto/social-proof-generator/releases/tag/v1.4)
+Latest version: [v1.4](https://github.com/MDendiPurwanto/social-proof-generator/releases/tag/v1.4)
 
 ## Contributing
 
