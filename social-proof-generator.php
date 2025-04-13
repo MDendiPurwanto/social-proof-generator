@@ -31,13 +31,13 @@ add_action('admin_menu', 'spg_admin_menu');
 // Halaman pengaturan
 function spg_settings_page() {
     if (isset($_POST['spg_save_settings']) && check_admin_referer('spg_save_settings_action', 'spg_nonce')) {
-        $position = isset($_POST['spg_position']) ? sanitize_text_field($_POST['spg_position']) : 'bottom-left';
-        $duration = isset($_POST['spg_duration']) ? intval($_POST['spg_duration']) : 3000;
-        $animation = isset($_POST['spg_animation']) ? sanitize_text_field($_POST['spg_animation']) : 'fade';
-        $names = isset($_POST['spg_names']) ? sanitize_textarea_field($_POST['spg_names']) : "Andy\nBudi\nSiti";
-        $products = isset($_POST['spg_products']) ? sanitize_textarea_field($_POST['spg_products']) : "WeddingPress\nProduk Keren\nLayanan Pro";
-        $bg_color = isset($_POST['spg_bg_color']) ? sanitize_hex_color($_POST['spg_bg_color']) : '#ffffff';
-        $image_id = isset($_POST['spg_image_id']) ? intval($_POST['spg_image_id']) : 0;
+        $position = isset($_POST['spg_position']) ? sanitize_text_field(wp_unslash($_POST['spg_position'])) : 'bottom-left';
+        $duration = isset($_POST['spg_duration']) ? intval(wp_unslash($_POST['spg_duration'])) : 3000;
+        $animation = isset($_POST['spg_animation']) ? sanitize_text_field(wp_unslash($_POST['spg_animation'])) : 'fade';
+        $names = isset($_POST['spg_names']) ? sanitize_textarea_field(wp_unslash($_POST['spg_names'])) : "Andy\nBudi\nSiti";
+        $products = isset($_POST['spg_products']) ? sanitize_textarea_field(wp_unslash($_POST['spg_products'])) : "WeddingPress\nProduk Keren\nLayanan Pro";
+        $bg_color = isset($_POST['spg_bg_color']) ? sanitize_hex_color(wp_unslash($_POST['spg_bg_color'])) : '#ffffff';
+        $image_id = isset($_POST['spg_image_id']) ? intval(wp_unslash($_POST['spg_image_id'])) : 0;
 
         update_option('spg_position', $position);
         update_option('spg_duration', $duration);
@@ -154,7 +154,7 @@ add_action('admin_enqueue_scripts', 'spg_enqueue_admin_scripts');
 function spg_add_meta_box() {
     add_meta_box(
         'spg_popup_options',
-        __( 'Social Proof Options', 'social-proof-generator' ),
+        __( 'Social Proof Generator Options', 'social-proof-generator' ),
         'spg_popup_options_callback',
         'page',
         'side',
@@ -176,7 +176,7 @@ function spg_popup_options_callback( $post ) {
     <p>
         <label for="spg_show_popup">
             <input type="checkbox" name="spg_show_popup" id="spg_show_popup" value="yes" <?php checked( $show_popup, 'yes' ); ?> />
-            <?php _e( 'Show Social Proof Pop-up on this page', 'social-proof-generator' ); ?>
+            <?php esc_html_e( 'Show Social Proof Pop-up on this page', 'social-proof-generator' ); ?>
         </label>
     </p>
     <?php
@@ -186,7 +186,7 @@ function spg_popup_options_callback( $post ) {
  * Simpan pengaturan meta box
  */
 function spg_save_popup_options( $post_id ) {
-    if ( ! isset( $_POST['spg_popup_options_nonce'] ) || ! wp_verify_nonce( $_POST['spg_popup_options_nonce'], 'spg_save_popup_options' ) ) {
+    if ( ! isset( $_POST['spg_popup_options_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['spg_popup_options_nonce'] ) ), 'spg_save_popup_options' ) ) {
         return;
     }
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
