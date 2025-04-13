@@ -23,6 +23,7 @@ jobs:
           cp -r assets social-proof-generator/
           cp readme.txt social-proof-generator/
           cp social-proof-generator.php social-proof-generator/
+          cp LICENSE social-proof-generator/  # Tambahkan ini
           # (Opsional) Salin folder languages jika ada terjemahan
           cp -r languages social-proof-generator/ 2>/dev/null || true
           # Pastikan tidak ada file pengembangan
