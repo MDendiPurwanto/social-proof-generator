@@ -3,7 +3,7 @@ Contributors: dendiwp
 Tags: social proof, notification, popup, marketing
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.3
+Stable tag: 1.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,6 +21,10 @@ Fitur:
 - Warna latar belakang kustom
 - Upload gambar produk kustom
 - Hanya ditampilkan pada halaman
+
+== Features ==
+* Display social proof notifications with customizable position, duration, animation, random messages, and colors.
+* Option to enable/disable pop-up on specific pages via the page editor.
 
 == Installation ==
 1. Unggah folder `social-proof-generator` ke direktori `/wp-content/plugins/`.
@@ -62,6 +66,14 @@ All images in assets/images/ are licensed under the GNU General Public License v
 * Perbaikan keamanan dan validasi input.
 
 = 1.3 =
+* Mengganti input URL gambar dengan media uploader untuk performa lebih baik.
+* Memperbaiki error JavaScript pada media uploader.
+* Menambahkan lisensi eksplisit untuk semua aset.
+* Menambahkan file LICENSE untuk kepatuhan GPL.
+
+= 1.4 =
+* Added option to enable/disable social proof pop-up per page.
+* Optimized script/style loading to only enqueue when pop-up is displayed.
 * Mengganti input URL gambar dengan media uploader untuk performa lebih baik.
 * Memperbaiki error JavaScript pada media uploader.
 * Menambahkan lisensi eksplisit untuk semua aset.

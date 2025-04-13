@@ -2,7 +2,7 @@
 /*
 Plugin Name: Social Proof Generator
 Description: Menampilkan notifikasi social proof dengan pengaturan posisi, durasi, animasi, pesan acak, dan warna kustom hanya pada halaman.
-Version: 1.3
+Version: 1.4
 Author: Muhamad Dendi Purwanto
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -31,13 +31,13 @@ add_action('admin_menu', 'spg_admin_menu');
 // Halaman pengaturan
 function spg_settings_page() {
     if (isset($_POST['spg_save_settings']) && check_admin_referer('spg_save_settings_action', 'spg_nonce')) {
-        $position = isset($_POST['spg_position']) ? sanitize_text_field(wp_unslash($_POST['spg_position'])) : '';
-        $duration = isset($_POST['spg_duration']) ? intval(wp_unslash($_POST['spg_duration'])) : 3000;
-        $animation = isset($_POST['spg_animation']) ? sanitize_text_field(wp_unslash($_POST['spg_animation'])) : '';
-        $names = isset($_POST['spg_names']) ? sanitize_textarea_field(wp_unslash($_POST['spg_names'])) : '';
-        $products = isset($_POST['spg_products']) ? sanitize_textarea_field(wp_unslash($_POST['spg_products'])) : '';
-        $bg_color = isset($_POST['spg_bg_color']) ? sanitize_hex_color(wp_unslash($_POST['spg_bg_color'])) : '';
-        $image_id = isset($_POST['spg_image_id']) ? intval(wp_unslash($_POST['spg_image_id'])) : 0;
+        $position = isset($_POST['spg_position']) ? sanitize_text_field($_POST['spg_position']) : 'bottom-left';
+        $duration = isset($_POST['spg_duration']) ? intval($_POST['spg_duration']) : 3000;
+        $animation = isset($_POST['spg_animation']) ? sanitize_text_field($_POST['spg_animation']) : 'fade';
+        $names = isset($_POST['spg_names']) ? sanitize_textarea_field($_POST['spg_names']) : "Andy\nBudi\nSiti";
+        $products = isset($_POST['spg_products']) ? sanitize_textarea_field($_POST['spg_products']) : "WeddingPress\nProduk Keren\nLayanan Pro";
+        $bg_color = isset($_POST['spg_bg_color']) ? sanitize_hex_color($_POST['spg_bg_color']) : '#ffffff';
+        $image_id = isset($_POST['spg_image_id']) ? intval($_POST['spg_image_id']) : 0;
 
         update_option('spg_position', $position);
         update_option('spg_duration', $duration);
@@ -46,8 +46,6 @@ function spg_settings_page() {
         update_option('spg_products', $products);
         update_option('spg_bg_color', $bg_color);
         update_option('spg_image_id', $image_id);
-        
-        wp_cache_delete('alloptions', 'options');
         
         echo '<div class="updated"><p>' . esc_html__('Pengaturan disimpan!', 'social-proof-generator') . '</p></div>';
     }
@@ -126,18 +124,6 @@ function spg_settings_page() {
     <?php
 }
 
-// Enqueue script dan style
-function spg_enqueue_scripts() {
-    if (is_page()) {
-        $css_version = filemtime(plugin_dir_path(__FILE__) . 'assets/css/spg-style.css');
-        $js_version = filemtime(plugin_dir_path(__FILE__) . 'assets/js/spg-script.js');
-        
-        wp_enqueue_style('spg-style', plugins_url('/assets/css/spg-style.css', __FILE__), array(), $css_version);
-        wp_enqueue_script('spg-script', plugins_url('/assets/js/spg-script.js', __FILE__), array(), $js_version, true);
-    }
-}
-add_action('wp_enqueue_scripts', 'spg_enqueue_scripts');
-
 // Enqueue media uploader scripts di halaman pengaturan
 function spg_enqueue_admin_scripts($hook) {
     if ($hook !== 'toplevel_page_social-proof-generator') {
@@ -162,11 +148,77 @@ function spg_enqueue_admin_scripts($hook) {
 }
 add_action('admin_enqueue_scripts', 'spg_enqueue_admin_scripts');
 
+/**
+ * Tambahkan meta box untuk mengatur pop-up sosial proof per halaman
+ */
+function spg_add_meta_box() {
+    add_meta_box(
+        'spg_popup_options',
+        __( 'Social Proof Options', 'social-proof-generator' ),
+        'spg_popup_options_callback',
+        'page',
+        'side',
+        'default'
+    );
+}
+add_action( 'add_meta_boxes', 'spg_add_meta_box' );
+
+/**
+ * Callback untuk render isi meta box
+ */
+function spg_popup_options_callback( $post ) {
+    $show_popup = get_post_meta( $post->ID, '_spg_show_popup', true );
+    if ( $show_popup === '' ) {
+        $show_popup = 'yes';
+    }
+    wp_nonce_field( 'spg_save_popup_options', 'spg_popup_options_nonce' );
+    ?>
+    <p>
+        <label for="spg_show_popup">
+            <input type="checkbox" name="spg_show_popup" id="spg_show_popup" value="yes" <?php checked( $show_popup, 'yes' ); ?> />
+            <?php _e( 'Show Social Proof Pop-up on this page', 'social-proof-generator' ); ?>
+        </label>
+    </p>
+    <?php
+}
+
+/**
+ * Simpan pengaturan meta box
+ */
+function spg_save_popup_options( $post_id ) {
+    if ( ! isset( $_POST['spg_popup_options_nonce'] ) || ! wp_verify_nonce( $_POST['spg_popup_options_nonce'], 'spg_save_popup_options' ) ) {
+        return;
+    }
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+    if ( ! current_user_can( 'edit_page', $post_id ) ) {
+        return;
+    }
+    $show_popup = isset( $_POST['spg_show_popup'] ) && $_POST['spg_show_popup'] === 'yes' ? 'yes' : 'no';
+    update_post_meta( $post_id, '_spg_show_popup', $show_popup );
+}
+add_action( 'save_post', 'spg_save_popup_options' );
+
 // Tambahkan popup ke footer hanya di halaman
 function spg_add_popup_to_footer() {
     if (!is_page()) {
         return;
     }
+
+    $post_id = get_the_ID();
+    $show_popup = get_post_meta($post_id, '_spg_show_popup', true);
+    if ($show_popup === '') {
+        $show_popup = 'yes';
+    }
+    if ($show_popup !== 'yes') {
+        return;
+    }
+
+    $css_version = filemtime(plugin_dir_path(__FILE__) . 'assets/css/spg-style.css');
+    $js_version = filemtime(plugin_dir_path(__FILE__) . 'assets/js/spg-script.js');
+    wp_enqueue_style('spg-style', plugins_url('/assets/css/spg-style.css', __FILE__), array(), $css_version);
+    wp_enqueue_script('spg-script', plugins_url('/assets/js/spg-script.js', __FILE__), array(), $js_version, true);
 
     $settings = array(
         'position' => get_option('spg_position', 'bottom-left'),
