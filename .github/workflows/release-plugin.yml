@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -45,7 +48,7 @@ jobs:
             ## Social Proof Generator ${{ github.ref_name }}
 
             ### Changelog
-            See the [Changelog](https://github.com/MDendiPurwanto/social-proof-generator/blob/main/readme.txt) in `readme.txt` for details.
+            See the [Changelog](https://github.com/MDendiPurwanto/social-proof-generator/blob/main/readme.txt) for details.
 
             ### Download
             Download the plugin ZIP below to install it on your WordPress site.
@@ -54,4 +57,4 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}  # Gunakan PAT
