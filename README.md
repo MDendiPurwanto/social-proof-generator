@@ -84,3 +84,4 @@ For questions, suggestions, or support, please open an issue in this repository 
 ---
 
 *Built with ❤️ by [Muhamad Dendi Purwanto](https://github.com/MDendiPurwanto)*
+*Supported with ❤️ by [WPTegal](https://wptegal.com/)*
