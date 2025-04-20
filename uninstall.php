@@ -12,19 +12,14 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 // Hapus semua opsi yang dibuat oleh plugin
-delete_option('spg_position');
-delete_option('spg_duration');
-delete_option('spg_animation');
-delete_option('spg_names');
-delete_option('spg_products');
-delete_option('spg_bg_color');
-delete_option('spg_image_id');
+delete_option('socproofgen_position');
+delete_option('socproofgen_duration');
+delete_option('socproofgen_animation');
+delete_option('socproofgen_names');
+delete_option('socproofgen_products');
+delete_option('socproofgen_bg_color');
+delete_option('socproofgen_image_id');
 
 // Hapus meta data per halaman
-global $wpdb;
-$wpdb->query(
-    $wpdb->prepare(
-        "DELETE FROM $wpdb->postmeta WHERE meta_key = %s",
-        '_spg_show_popup'
-    )
-);
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+delete_metadata('post', 0, '_socproofgen_show_popup', '', true);

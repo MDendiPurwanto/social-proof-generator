@@ -5,8 +5,7 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
  
-.social-proof-popup {
-    position: fixed;
+ .social-proof-popup {
     color: #333;
     padding: 10px;
     border-radius: 10px;
@@ -17,7 +16,7 @@
     align-items: center;
 }
 
-.social-proof-popup img.spg-product-image {
+.social-proof-popup img.socproofgen-product-image {
     width: 50px;
     height: 50px;
     margin-right: 10px;
@@ -25,27 +24,18 @@
     object-fit: cover;
 }
 
-.spg-content p {
+.socproofgen-content p {
     margin: 0;
     font-size: 14px;
     line-height: 1.4;
 }
 
-.spg-content p strong {
+.socproofgen-content p strong {
     font-weight: bold;
 }
 
-.spg-bottom-left { bottom: 20px; left: 20px; }
-.spg-bottom-right { bottom: 20px; right: 20px; }
-.spg-top-left { top: 20px; left: 20px; }
-.spg-top-right { top: 20px; right: 20px; }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { transform: translateY(100px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.socproofgen-no-image {
+    margin-right: 10px;
+    font-style: italic;
+    color: #999;
 }

@@ -4,22 +4,13 @@
  * Licensed under the GNU General Public License v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
+jQuery(document).ready(function($) {
+    var settings = socproofgenSettings;
+    var $popup = $('#socproofgen-popup');
+    var $content = $popup.find('.socproofgen-content p');
 
-document.addEventListener('DOMContentLoaded', function() {
-    var popup = document.getElementById('spg-popup');
-    if (!popup) return;
-    var message = popup.querySelector('.spg-content p');
-
-    // Terapkan posisi
-    popup.classList.add('spg-' + spgSettings.position);
-
-    // Fungsi untuk memilih nama dan produk acak
-    function getRandomName() {
-        return spgSettings.names[Math.floor(Math.random() * spgSettings.names.length)];
-    }
-
-    function getRandomProduct() {
-        return spgSettings.products[Math.floor(Math.random() * spgSettings.products.length)];
+    if (!settings.names.length || !settings.products.length) {
+        return;
     }
 
     // Fungsi untuk menghasilkan tanggal dan waktu acak
@@ -39,24 +30,34 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')} (WIB)`;
     }
 
-    // Fungsi untuk menampilkan popup
     function showPopup() {
-        var name = getRandomName();
-        var product = getRandomProduct();
+        var name = settings.names[Math.floor(Math.random() * settings.names.length)];
+        var product = settings.products[Math.floor(Math.random() * settings.products.length)];
         var dateTime = getRandomDateTime();
-        message.innerHTML = `${name} telah membeli <strong>${product}</strong> pada: ${dateTime}`;
-        popup.style.display = 'flex';
+        $content.html(`${name} Telah membeli ${product} pada: ${dateTime}`);
+        
+        $popup.css({
+            'display': 'block',
+            'position': 'fixed',
+            [settings.position.includes('bottom') ? 'bottom' : 'top']: '20px',
+            [settings.position.includes('right') ? 'right' : 'left']: '20px',
+        });
 
-        // Terapkan animasi
-        popup.style.animation = spgSettings.animation === 'fade' ? 'fadeIn 0.5s' : 'slideIn 0.5s';
+        if (settings.animation === 'fade') {
+            $popup.fadeIn();
+        } else {
+            $popup.slideDown();
+        }
 
-        // Sembunyikan setelah durasi
         setTimeout(function() {
-            popup.style.display = 'none';
-        }, spgSettings.duration);
+            if (settings.animation === 'fade') {
+                $popup.fadeOut();
+            } else {
+                $popup.slideUp();
+            }
+        }, settings.duration * 1000);
     }
 
-    // Tampilkan pertama kali dan ulangi setiap 10 detik
     showPopup();
-    setInterval(showPopup, 10000);
+    setInterval(showPopup, (settings.duration + 2) * 1000);
 });
